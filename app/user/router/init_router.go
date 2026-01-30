@@ -9,7 +9,8 @@ import (
 	common "go-admin/common/middleware"
 )
 
-// InitRouter 路由初始化
+// InitRouter 初始化路由并注册应用业务路由。
+// 从 sdk.Runtime 获取 Gin 引擎，初始化认证中间件并调用 initRouter 注册路由；若未找到引擎、引擎类型不支持或 JWT 初始化失败，则记录致命日志并退出。
 func InitRouter() {
 	var r *gin.Engine
 	h := sdk.Runtime.GetEngine()
